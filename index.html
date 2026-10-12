@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#030515">
+
+    <title>El universo de Estrella ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FONDO COSMICO -->
+    <div class="fondo-cosmos" aria-hidden="true">
+
+        <div class="nebulosa"></div>
+
+        <div class="aurora aurora-verde"></div>
+        <div class="aurora aurora-violeta"></div>
+        <div class="aurora aurora-rosa"></div>
+
+        <!-- Estrellas creadas con JavaScript -->
+        <div id="cielo-estrellado"></div>
+
+        <!-- Lineas de constelacion decorativas -->
+        <svg class="constelaciones"
+             viewBox="0 0 400 800"
+             preserveAspectRatio="none">
+
+            <polyline
+                points="35,100 95,150 150,90
+                        220,175 300,115 365,190"
+            />
+
+            <polyline
+                points="25,390 100,330 175,410
+                        245,350 340,430"
+            />
+
+            <polyline
+                points="45,620 120,555 205,635
+                        280,570 360,680"
+            />
+
+        </svg>
+    </div>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main id="contenido">
+
+        <header>
+            <h1>Hola, Estrella 🌟</h1>
+
+            <p class="subtitulo">
+                En este pequeño universo,
+                cada estrella guarda una palabra
+                especial para ti...
+            </p>
+        </header>
+
+
+        <!-- ESTRELLAS INTERACTIVAS -->
+        <section id="galaxia"
+                 aria-label="Diez estrellas mágicas">
+
+            <button class="estrella"
+                    style="--x:42%; --y:5%"
+                    aria-label="Descubrir estrella 1">✦</button>
+
+            <button class="estrella"
+                    style="--x:72%; --y:16%"
+                    aria-label="Descubrir estrella 2">✦</button>
+
+            <button class="estrella"
+                    style="--x:20%; --y:26%"
+                    aria-label="Descubrir estrella 3">✦</button>
+
+            <button class="estrella"
+                    style="--x:52%; --y:34%"
+                    aria-label="Descubrir estrella 4">✦</button>
+
+            <button class="estrella"
+                    style="--x:84%; --y:45%"
+                    aria-label="Descubrir estrella 5">✦</button>
+
+            <button class="estrella"
+                    style="--x:13%; --y:52%"
+                    aria-label="Descubrir estrella 6">✦</button>
+
+            <button class="estrella"
+                    style="--x:45%; --y:65%"
+                    aria-label="Descubrir estrella 7">✦</button>
+
+            <button class="estrella"
+                    style="--x:73%; --y:73%"
+                    aria-label="Descubrir estrella 8">✦</button>
+
+            <button class="estrella"
+                    style="--x:28%; --y:86%"
+                    aria-label="Descubrir estrella 9">✦</button>
+
+            <button class="estrella"
+                    style="--x:60%; --y:94%"
+                    aria-label="Descubrir estrella 10">✦</button>
+
+        </section>
+
+
+        <!-- MENSAJE SECRETO -->
+        <div class="contenedor-mensaje">
+            <p id="mensaje" aria-live="polite"></p>
+        </div>
+
+    </main>
+
+
+    <!-- PARTÍCULAS DE EXPLOSIONES -->
+    <div id="particulas" aria-hidden="true"></div>
+
+
+    <!-- ESCENA FINAL DEL COMETA -->
+    <section id="escena-final"
+             class="oculto"
+             aria-label="Mensaje final para Estrella">
+
+        <div id="cometa" aria-hidden="true"></div>
+
+        <div id="mensaje-cometa">
+
+            <span class="corazon-final">💖</span>
+
+            <h2>Para ti, Estrella</h2>
+
+            <p>
+                Te quiero mucho,<br>
+                te deseo un mágico día!
+            </p>
+
+            <span class="detalle-final">
+                Gracias por iluminar mi universo ✨
+            </span>
+
+            <button id="reiniciar">
+                Volver a nuestro universo 🌌
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+</body>
+</html>

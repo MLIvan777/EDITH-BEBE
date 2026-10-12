@@ -1,0 +1,731 @@
+
+/* =====================================
+   CONFIGURACION GENERAL
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    background: #030515;
+    color: white;
+
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* =====================================
+   FONDO COSMICO
+===================================== */
+
+.fondo-cosmos {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at 50% 45%,
+        #17275e 0%,
+        #0b1236 45%,
+        #030515 100%
+    );
+
+    isolation: isolate;
+}
+
+/* =====================================
+   NEBULOSA
+===================================== */
+
+.nebulosa {
+    position: absolute;
+    inset: -25%;
+
+    background:
+        radial-gradient(
+            ellipse at 30% 40%,
+            rgba(0, 255, 195, 0.42),
+            transparent 43%
+        ),
+        radial-gradient(
+            ellipse at 70% 55%,
+            rgba(155, 75, 255, 0.48),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 50% 75%,
+            rgba(255, 55, 166, 0.32),
+            transparent 42%
+        );
+
+    filter: blur(32px);
+
+    animation: respirarNebulosa
+               14s ease-in-out infinite alternate;
+}
+
+@keyframes respirarNebulosa {
+    from {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.65;
+    }
+
+    to {
+        transform: scale(1.18) rotate(8deg);
+        opacity: 1;
+    }
+}
+
+/* =====================================
+   AURORAS BOREALES
+===================================== */
+
+.aurora {
+    position: absolute;
+
+    width: 90%;
+    height: 115%;
+    top: -12%;
+
+    border-radius: 45%;
+    filter: blur(35px);
+    opacity: 0.75;
+
+    transform-origin: top center;
+    mix-blend-mode: screen;
+
+    animation: moverAurora
+               12s ease-in-out infinite alternate;
+}
+
+.aurora-verde {
+    left: -35%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 187, 0.15),
+        rgba(36, 255, 190, 0.75),
+        rgba(60, 255, 230, 0.18),
+        transparent
+    );
+}
+
+.aurora-violeta {
+    right: -32%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(120, 65, 250, 0.15),
+        rgba(174, 85, 255, 0.78),
+        rgba(132, 100, 255, 0.18),
+        transparent
+    );
+
+    animation-duration: 16s;
+    animation-delay: -5s;
+}
+
+.aurora-rosa {
+    left: 13%;
+    top: 10%;
+
+    width: 78%;
+    height: 90%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 70, 176, 0.12),
+        rgba(255, 100, 210, 0.48),
+        transparent
+    );
+
+    animation-duration: 19s;
+    animation-delay: -9s;
+}
+
+@keyframes moverAurora {
+    0% {
+        transform:
+            translateX(-15%)
+            skewX(-16deg)
+            scaleX(0.85);
+    }
+
+    50% {
+        transform:
+            translateX(6%)
+            skewX(6deg)
+            scaleX(1.15);
+    }
+
+    100% {
+        transform:
+            translateX(18%)
+            skewX(16deg)
+            scaleX(0.9);
+    }
+}
+
+/* =====================================
+   ESTRELLAS BLANCAS DEL FONDO
+===================================== */
+
+#cielo-estrellado {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+}
+
+.punto-estrella {
+    position: absolute;
+
+    border-radius: 50%;
+    background: white;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px rgba(145, 195, 255, 0.5);
+
+    animation: titilar
+               3s ease-in-out infinite alternate;
+}
+
+@keyframes titilar {
+    from {
+        opacity: 0.2;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+
+/* =====================================
+   LINEAS DE CONSTELACION
+===================================== */
+
+.constelaciones {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.35;
+
+    animation: flotar
+               12s ease-in-out infinite alternate;
+}
+
+.constelaciones polyline {
+    fill: none;
+    stroke: rgba(215, 225, 255, 0.45);
+    stroke-width: 1.3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* =====================================
+   CONTENIDO PRINCIPAL
+===================================== */
+
+main {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 28px 15px;
+    text-align: center;
+}
+
+header {
+    max-width: 350px;
+}
+
+h1 {
+    margin: 0 0 12px;
+
+    font-size: clamp(26px, 7vw, 36px);
+    color: #ffe0f5;
+
+    text-shadow:
+        0 0 12px #f58bd9,
+        0 0 35px rgba(255, 100, 210, 0.55);
+}
+
+.subtitulo {
+    margin: 0;
+
+    color: #e0ddff;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =====================================
+   GALAXIA INTERACTIVA
+===================================== */
+
+#galaxia {
+    position: relative;
+
+    width: min(85vw, 340px);
+    aspect-ratio: 1 / 1;
+
+    margin: 20px auto;
+
+    flex-shrink: 0;
+}
+
+/* Botones con forma de estrella */
+
+.estrella {
+    position: absolute;
+
+    left: var(--x);
+    top: var(--y);
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    color: #fff2bc;
+    font-size: 36px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+
+    text-shadow:
+        0 0 6px #ffffff,
+        0 0 16px #ffe681,
+        0 0 30px #ffc04d;
+
+    animation: brilloEstrella
+               2.5s ease-in-out infinite alternate;
+}
+
+/* Resplandor secundario */
+
+.estrella::before {
+    content: "";
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 230, 140, 0.5),
+        transparent 70%
+    );
+
+    z-index: -1;
+}
+
+@keyframes brilloEstrella {
+    from {
+        opacity: 0.75;
+        filter: brightness(0.9);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1.6)
+                drop-shadow(0 0 14px gold);
+    }
+}
+
+/* Explosion de estrella */
+
+.estrella.explotando {
+    pointer-events: none;
+    animation: explotarEstrella
+               450ms ease-out forwards;
+}
+
+@keyframes explotarEstrella {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(2.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   MENSAJE SECRETO
+===================================== */
+
+.contenedor-mensaje {
+    width: min(90%, 360px);
+    min-height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mensaje {
+    margin: 0;
+
+    color: #ffe3f6;
+    font-size: clamp(18px, 5vw, 23px);
+    line-height: 1.5;
+
+    text-shadow:
+        0 0 10px rgba(255, 150, 225, 0.8),
+        0 0 25px rgba(174, 100, 255, 0.5);
+}
+
+/* =====================================
+   PARTICULAS COSMICAS
+===================================== */
+
+#particulas {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particula {
+    position: absolute;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: white;
+
+    box-shadow:
+        0 0 8px currentColor,
+        0 0 16px currentColor;
+
+    animation: explosionParticula
+               900ms ease-out forwards;
+}
+
+@keyframes explosionParticula {
+    from {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translate(var(--dx), var(--dy))
+            scale(0);
+
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   ESCENA FINAL
+===================================== */
+
+.oculto {
+    display: none !important;
+}
+
+#escena-final {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    overflow: hidden;
+
+    background: rgba(3, 5, 22, 0.60);
+    backdrop-filter: blur(4px);
+}
+
+/* =====================================
+   COMETA
+===================================== */
+
+#cometa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 15px 6px #ffffff,
+        0 0 35px 12px #80eaff,
+        0 0 65px 20px #b675ff;
+
+    animation: viajeCometa
+               2.6s ease-in-out both;
+}
+
+/* Cola del cometa */
+
+#cometa::before {
+    content: "";
+
+    position: absolute;
+    right: 8px;
+    top: 5px;
+
+    width: 200px;
+    height: 10px;
+
+    transform: rotate(-25deg);
+    transform-origin: right center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        to left,
+        white,
+        #80eaff,
+        #ba8cff,
+        transparent
+    );
+
+    filter: blur(7px);
+}
+
+@keyframes viajeCometa {
+    0% {
+        transform:
+            translate(-85vw, 35vh)
+            rotate(-10deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(85vw, -35vh)
+            rotate(-10deg);
+
+        opacity: 0;
+    }
+}
+
+/* =====================================
+   DEDICATORIA FINAL
+===================================== */
+
+#mensaje-cometa {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 360px);
+    padding: 30px 22px;
+
+    text-align: center;
+    border-radius: 26px;
+
+    background: rgba(25, 15, 60, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow:
+        0 0 35px rgba(175, 105, 255, 0.4);
+
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    animation: revelarMensaje
+               1.6s ease-out 1.8s forwards;
+}
+
+.corazon-final {
+    display: block;
+    font-size: 45px;
+
+    animation: latido 2s infinite;
+}
+
+#mensaje-cometa h2 {
+    margin: 12px 0;
+
+    font-size: 26px;
+    color: #ffd6f5;
+}
+
+#mensaje-cometa p {
+    font-size: 23px;
+    line-height: 1.6;
+
+    color: white;
+
+    text-shadow:
+        0 0 12px #ff9ae7,
+        0 0 25px #ad8aff;
+}
+
+.detalle-final {
+    display: block;
+    color: #decaff;
+
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+#reiniciar {
+    background: linear-gradient(
+        135deg,
+        #e04ad6,
+        #7c3aed
+    );
+
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+
+    padding: 14px 18px;
+    font-size: 14px;
+
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+@keyframes revelarMensaje {
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px)
+            scale(0.8);
+
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+        filter: blur(0);
+    }
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.16);
+    }
+}
+
+/* =====================================
+   PANTALLAS PEQUENAS
+===================================== */
+
+@media (max-height: 680px) {
+    main {
+        justify-content: flex-start;
+    }
+
+    #galaxia {
+        width: min(72vw, 265px);
+        margin: 15px auto;
+    }
+}
+
+/* Accesibilidad: reducir movimiento */
+
+@media (prefers-reduced-motion: reduce) {
+    .nebulosa,
+    .aurora,
+    .punto-estrella,
+    .constelaciones,
+    .estrella,
+    .corazon-final {
+        animation: none;
+    }
+
+    #cometa {
+        animation: none;
+        opacity: 0;
+    }
+
+    #mensaje-cometa {
+        animation: none;
+        opacity: 1;
+    }
+
+    .estrella.explotando {
+        opacity: 0;
+    }
+}
